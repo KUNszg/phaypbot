@@ -33,10 +33,8 @@ function onMessageHandler (channel, user, msg, self) {
   if (channel === '#phayp') { 
     if (command[0] === 'test') {
       client.say(channel, `peepoHappy <3 test successful`);
-      console.log(`* Executed ${command[0]} command`);
-    } else {
-      console.log(`* Unknown command ${command[0]}`);
-    }
+      return;
+    } 
     
     for (var i=0; i<=command.length; i++) {
       if (command[i] === 'banphrase') {
@@ -46,71 +44,54 @@ function onMessageHandler (channel, user, msg, self) {
     
   }
   
-  
-  
-  if (command[0] != 'pb') { return; } // ignore messages that don't start with pb
-  
   // commands
+  if (command[0] != 'pb') { return; } // ignore messages that don't start with pb
   
   // ping
   if (command[1] === 'ping') {
     client.say(channel, `${user['username']}, pong peepoHappy`);
-    console.log(`* Executed ${command[1]} command`);
-  } else {
-    console.log(`* Unknown command ${command[1]}`);
+    return;
   }
   
   // d20
   if (command[1] === 'd20') {
     const num = rollDice();
     client.say(channel, `${user['username']}, you rolled a ${num}.`);
-    console.log(`* Executed ${command[1]} command`);
-  } else {
-    console.log(`* Unknown command ${command[1]}`);
-  }
-    
+    return;
+  } 
+
   // dank
   if (command[1] === 'dank') {
     if (command[2] === user['username']) {
       client.say(channel, `${user['username']} danked themselves FeelsDankMan ...`);
-      console.log(`* Executed ${command[1]} command`);
     } else {
       if (!command[2]) {
         client.say(channel, `${user['username']} danked nobody FeelsDankMan ...`);
-        console.log(`* Executed ${command[1]} command`);
       } else {
         client.say(channel, `${user['username']} danked ${command[2]} FeelsDankMan !!!`)
-        console.log(`* Executed ${command[1]} command`);
       }
     }
-  } else {
-    console.log(`* Unknown command ${command[1]}`);
-  }
+    return;
+  } 
   
   // hug
   if (command[1] === 'hug') {
     if (command[2] === user['username']) {
       client.say(channel, `${user['username']} hugs themselves dankHug`);
-      console.log(`* Executed ${command[1]} command`);
     } else {
       if (!command[2]) {
         client.say(channel, `${user['username']} had no one to hug so they hugged themselves dankHug`);
-        console.log(`* Executed ${command[1]} command`);
       } else {
         client.say(channel, `${user['username']} hugs ${command[2]} dankHug`)
-        console.log(`* Executed ${command[1]} command`);
       }
     }
-  } else {
-    console.log(`* Unknown command ${command[1]}`);
-  }
+    return;
+  } 
   
   // vanish
   if (command[1] === 'vanish') {
     client.say(channel, `/timeout ${user['username']} 1`);
-    console.log(`* Executed ${command[1]} command`);
-  } else {
-    console.log(`* Unknown command ${command[1]}`);
+    return;
   }
   
   // pyramid
@@ -125,8 +106,41 @@ function onMessageHandler (channel, user, msg, self) {
       a = row(i, command[3]);
       client.say(channel, a);
     }
+    return;
   }
-  
+
+  if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
+    if (process.platform === "win32") {
+      client.say(channel, 'This command cannot be ran outside of Linux, you should use it on server version of the bot :)');
+      return;
+    }
+
+    try {
+      const shell = require('child_process');
+
+      const pullFromRepo = shell
+        .execSync('sudo git pull')
+        .toString()
+        .split('\n')
+
+      if (pullFromRepo[0].toLowerCase().includes('already up to date')) {
+        client.say(channel, `PrideCute bot is already up to date`);
+        return;
+      }
+
+      const formattedResponse = pullFromRepo[0].toLowerCase().split('.')[0] + 
+        ' | ' + pullFromRepo.splice(3).join('\n').replace(/-{2,}/g, "").replace(/\+{2,}/g, "");
+
+      client.say(channel, `peepoHappy ${formattedResponse}`);
+                  
+      setTimeout(() => {
+        shell.execSync(`sudo pm2 restart bot`);
+      }, 1000);
+      return;
+    } catch (err) {
+      console.log(err)
+    }
+  }
 }
 
 
@@ -151,5 +165,5 @@ function row(length, text) {
 
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
-  console.log(`* Connected to ${addr}:${port}`);
+  client.say('#phayp', 'hi peepoHappy');
 }
