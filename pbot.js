@@ -109,6 +109,17 @@ if (command[1] === 'pyramid') {
     return;
 }
 
+//say
+if (command[1] === 'say') {
+    var a = '';
+
+    for (var i=2; i<command.length; i++) {
+        a = a + command[i] + ' ';
+    }
+
+    cleint.say(channel, a);
+}
+
 // restart
 if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
     if (process.platform === "win32") {
