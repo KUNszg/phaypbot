@@ -137,7 +137,7 @@ function onMessageHandler (channel, user, msg, self) {
             .split('\n')
 
           if (pullFromRepo[0].toLowerCase().includes('already up to date')) {
-            client.say(channel, `PrideCute bot is already up to date`);
+            client.say(channel, `peepoHapyp bot is already up to date`);
             return;
         }
 
