@@ -117,7 +117,8 @@ if (command[1] === 'say') {
         a = a + command[i] + ' ';
     }
 
-    cleint.say(channel, a);
+    client.say(channel, a);
+    return;
 }
 
 // restart
