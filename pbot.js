@@ -25,77 +25,77 @@ client.connect();
 
 // Called every time a message comes in
 function onMessageHandler (channel, user, msg, self) {
-  if (self) { return; } // Ignore messages from the bot
+    if (self) { return; } // Ignore messages from the bot
 
-  const command = msg.split(' '); // splits message into array
+    const command = msg.split(' '); // splits message into array
   
-  // test
-  if (channel === '#phayp') { 
+    // test
+    if (channel === '#phayp') { 
     if (command[0] === 'test') {
-      client.say(channel, `peepoHappy <3 test successful`);
-      return;
+        client.say(channel, `peepoHappy <3 test successful`);
+        return;
     } 
     
     for (var i=0; i<=command.length; i++) {
-      if (command[i] === 'banphrase') {
-      client.say(channel, `/timeout ${user['username']} 5`)
-      } 
+        if (command[i] === 'banphrase') {
+        client.say(channel, `/timeout ${user['username']} 5`)
+        } 
     }
     
-  }
+}
   
-  // commands
-  if (command[0] != 'pb') { return; } // ignore messages that don't start with pb
+// commands
+if (command[0] != 'pb') { return; } // ignore messages that don't start with pb
   
-  // ping
-  if (command[1] === 'ping') {
+// ping
+if (command[1] === 'ping') {
     client.say(channel, `${user['username']}, pong peepoHappy`);
     return;
-  }
+}
   
-  // d20
-  if (command[1] === 'd20') {
+// d20
+if (command[1] === 'd20') {
     const num = rollDice();
     client.say(channel, `${user['username']}, you rolled a ${num}.`);
     return;
-  } 
+} 
 
-  // dank
-  if (command[1] === 'dank') {
+// dank
+if (command[1] === 'dank') {
     if (command[2] === user['username']) {
-      client.say(channel, `${user['username']} danked themselves FeelsDankMan ...`);
+        client.say(channel, `${user['username']} danked themselves FeelsDankMan ...`);
     } else {
-      if (!command[2]) {
+    if (!command[2]) {
         client.say(channel, `${user['username']} danked nobody FeelsDankMan ...`);
-      } else {
-        client.say(channel, `${user['username']} danked ${command[2]} FeelsDankMan !!!`)
-      }
+        } else {
+            client.say(channel, `${user['username']} danked ${command[2]} FeelsDankMan !!!`)
+        }
     }
     return;
-  } 
+} 
   
-  // hug
-  if (command[1] === 'hug') {
+// hug
+if (command[1] === 'hug') {
     if (command[2] === user['username']) {
-      client.say(channel, `${user['username']} hugs themselves dankHug`);
+        client.say(channel, `${user['username']} hugs themselves dankHug`);
     } else {
-      if (!command[2]) {
+    if (!command[2]) {
         client.say(channel, `${user['username']} had no one to hug so they hugged themselves dankHug`);
-      } else {
-        client.say(channel, `${user['username']} hugs ${command[2]} dankHug`)
-      }
+        } else {
+            client.say(channel, `${user['username']} hugs ${command[2]} dankHug`)
+        }
     }
     return;
-  } 
+} 
   
-  // vanish
-  if (command[1] === 'vanish') {
+// vanish
+if (command[1] === 'vanish') {
     client.say(channel, `/timeout ${user['username']} 1`);
     return;
-  }
+}
   
-  // pyramid
-  if (command[1] === 'pyramid') {
+// pyramid
+if (command[1] === 'pyramid') {
     var a = '';
     for(var i=0; i<command[2]; i++) {
       a = row(i, command[3]);
@@ -107,9 +107,10 @@ function onMessageHandler (channel, user, msg, self) {
       client.say(channel, a);
     }
     return;
-  }
+}
 
-  if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
+// restart
+if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
     if (process.platform === "win32") {
       client.say(channel, 'This command cannot be ran outside of Linux, you should use it on server version of the bot :)');
       return;
@@ -126,22 +127,22 @@ function onMessageHandler (channel, user, msg, self) {
       if (pullFromRepo[0].toLowerCase().includes('already up to date')) {
         client.say(channel, `PrideCute bot is already up to date`);
         return;
-      }
+    }
 
-      const formattedResponse = pullFromRepo[0].toLowerCase().split('.')[0] + 
+    const formattedResponse = pullFromRepo[0].toLowerCase().split('.')[0] + 
         ' | ' + pullFromRepo.splice(3).join('\n').replace(/-{2,}/g, "").replace(/\+{2,}/g, "");
 
-      client.say(channel, `peepoHappy ${formattedResponse}`);
+    client.say(channel, `peepoHappy ${formattedResponse}`);
                   
-      setTimeout(() => {
+    setTimeout(() => {
         shell.execSync(`sudo pm2 restart bot`);
-      }, 1000);
-      return;
+    }, 1000);
+    return;
     } catch (err) {
-      console.log(err)
+        console.log(err)
     }
-  }
 }
+
 
 
 // used functions
