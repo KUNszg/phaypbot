@@ -10,6 +10,7 @@ const opts = {
   channels: [
     "phayp",
     "kunszg"
+    "axo__"
   ]
 };
 
@@ -109,7 +110,7 @@ function onMessageHandler (channel, user, msg, self) {
         return;
     }
 
-    //say
+    // say
     if (command[1] === 'say') {
         var a = '';
 
@@ -165,7 +166,7 @@ function rollDice () {
   return Math.floor(Math.random() * sides) + 1;
 }
   
-// rows
+// rows (used for pyramids)
 function row(length, text) {
   var row = '';
   
