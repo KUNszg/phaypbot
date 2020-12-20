@@ -41,8 +41,8 @@ function onMessageHandler (channel, user, msg, self) {
     
         // banphrase test
         for (var i=0; i<=command.length; i++) {
-            if ((command[i] === 'peepoSad') && (command[i+1] === '🔫')) {
-                client.say(channel, `/timeout ${user['username']} 5`)
+            if (((command[i] === 'peepoSad' || 'peepoSadMan' || 'FeelsBadMan') && (command[i+1] === '🔫' || 'nymnGun')) {
+                client.say(channel, `/timeout ${user['username']} 1`)
             } 
         }
     }
@@ -163,7 +163,7 @@ function onMessageHandler (channel, user, msg, self) {
             .split('\n')
 
           if (pullFromRepo[0].toLowerCase().includes('already up to date')) {
-            client.say(channel, `peepoHapyp bot is already up to date`);
+            client.say(channel, `peepoHappy bot is already up to date`);
             return;
         }
 
