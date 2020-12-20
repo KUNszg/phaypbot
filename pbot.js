@@ -41,7 +41,7 @@ function onMessageHandler (channel, user, msg, self) {
     
         // banphrase test
         for (var i=0; i<=command.length; i++) {
-            if (command[i] === 'banphrase') {
+            if ((command[i] === 'peepoSad') && (command[i+1] === '🔫')) {
                 client.say(channel, `/timeout ${user['username']} 5`)
             } 
         }
