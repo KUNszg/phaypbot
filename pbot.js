@@ -105,7 +105,7 @@ function onMessageHandler (channel, user, msg, self) {
         var a = '';
         
         if (text.charAt(0) === '/') {
-            client.say(channel, ${user['username']}, no.)
+            client.say(channel, `${user['username']}, no.`)
         } else if (length <= 5) {
             for(var i=0; i<length; i++) {
                 a = row(i, text);
