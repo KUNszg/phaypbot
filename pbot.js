@@ -33,7 +33,7 @@ function onMessageHandler (channel, user, msg, self) {
   
     // test
     if (channel === '#phayp') { 
-    if (command[0] === 'test') {
+    if (command[0] === 'test') { 
         client.say(channel, `peepoHappy <3 test successful`);
         return;
     } 
@@ -99,15 +99,32 @@ function onMessageHandler (channel, user, msg, self) {
   
     // pyramid
     if (command[1] === 'pyramid') {
+        var length = command[2];
+        var text = command[3];
         var a = '';
-        for(var i=0; i<command[2]; i++) {
-          a = row(i, command[3]);
-          client.say(channel, a);
-        }
         
-        for(var i=command[2]; i>0; i--) {
-          a = row(i, command[3]);
-          client.say(channel, a);
+        if (length <= 5) {
+            for(var i=0; i<length; i++) {
+              a = row(i, text);
+              client.say(channel, a);
+            }
+            for(var i=length; i>0; i--) {
+              a = row(i, text);
+              client.say(channel, a);
+            }
+        } else if (channel === "#phayp" && length<=20) {
+              for(var i=0; i<length; i++) {
+                  a = row(i, text);
+                  client.say(channel, a);
+              }
+              for(var i=length; i>0; i--) {
+                  a = row(i, text);
+                  client.say(channel, a);
+              }
+        } else  if (length>5) {
+          client.say(channel, `${user['username']}, pyramid is too big FeelsDankMan`);
+        } else {
+          client.say(channel, `${user['username']}, FeelsDankMan ...`);
         }
         return;
     }
@@ -115,12 +132,16 @@ function onMessageHandler (channel, user, msg, self) {
     // say
     if (command[1] === 'say') {
         var a = '';
+        
+        if (command[2].charAt(0) === '/') {
+            client.say(channel, `${user['username']}, no.`)
+        } else {
+            for (var i=2; i<command.length; i++) {
+                a = a + command[i] + ' ';
+            }
 
-        for (var i=2; i<command.length; i++) {
-            a = a + command[i] + ' ';
+            client.say(channel, a);
         }
-
-        client.say(channel, a);
         return;
     }
 
