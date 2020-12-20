@@ -39,9 +39,9 @@ function onMessageHandler (channel, user, msg, self) {
             return;
         } 
     
-        // banphrase test
+        // banphrase
         for (var i=0; i<=command.length; i++) {
-            if (((command[i] === 'peepoSad' || 'peepoSadMan' || 'FeelsBadMan') && (command[i+1] === '🔫' || 'nymnGun')) {
+            if (((command[i] === ('peepoSad' || 'peepoSadMan' || 'FeelsBadMan')) && (command[i+1] === ('🔫' || 'nymnGun')))) {
                 client.say(channel, `/timeout ${user['username']} 1`)
             } 
         }
