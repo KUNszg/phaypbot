@@ -104,24 +104,26 @@ function onMessageHandler (channel, user, msg, self) {
         var text = command[3];
         var a = '';
         
-        if (length <= 5) {
+        if (text.charAt(0) === '/') {
+            client.say(channel, ${user['username']}, no.)
+        } else if (length <= 5) {
             for(var i=0; i<length; i++) {
-              a = row(i, text);
-              client.say(channel, a);
+                a = row(i, text);
+                client.say(channel, a);
             }
             for(var i=length; i>0; i--) {
-              a = row(i, text);
-              client.say(channel, a);
+                a = row(i, text);
+                client.say(channel, a);
             }
         } else if (channel === "#phayp" && length<=20) {
-              for(var i=0; i<length; i++) {
-                  a = row(i, text);
-                  client.say(channel, a);
-              }
-              for(var i=length; i>0; i--) {
-                  a = row(i, text);
-                  client.say(channel, a);
-              }
+            for(var i=0; i<length; i++) {
+                a = row(i, text);
+                client.say(channel, a);
+            }
+            for(var i=length; i>0; i--) {
+                a = row(i, text);
+                client.say(channel, a);
+            }
         } else  if (length>5) {
           client.say(channel, `${user['username']}, pyramid is too big FeelsDankMan`);
         } else {
