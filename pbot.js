@@ -32,20 +32,19 @@ function onMessageHandler (channel, user, msg, self) {
 
     const command = msg.split(' '); // splits message into array
   
-    // test
     if (channel === '#phayp') { 
-    if (command[0] === 'test') { 
-        client.say(channel, `peepoHappy <3 test successful`);
-        return;
-    } 
-    
-    //banphrase test
-    for (var i=0; i<=command.length; i++) {
-        if (command[i] === 'banphrase') {
-        client.say(channel, `/timeout ${user['username']} 5`)
+        // test
+        if (command[0] === 'test') { 
+            client.say(channel, `peepoHappy <3 test successful`);
+            return;
         } 
-    }
     
+        // banphrase test
+        for (var i=0; i<=command.length; i++) {
+            if (command[i] === 'banphrase') {
+                client.say(channel, `/timeout ${user['username']} 5`)
+            } 
+        }
     }
   
     // commands
@@ -184,7 +183,7 @@ function onMessageHandler (channel, user, msg, self) {
 }
 
 
-// used functions
+// functions used in commands
 
 // diceroll
 function rollDice () {
