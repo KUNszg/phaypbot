@@ -9,8 +9,9 @@ const opts = {
   },
   channels: [
     "phayp",
-    "kunszg"
-    "axo__"
+    "kunszg",
+    "axo__",
+    "senderak"
   ]
 };
 
