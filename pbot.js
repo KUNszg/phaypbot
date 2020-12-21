@@ -148,7 +148,7 @@ function onMessageHandler (channel, user, msg, self) {
         return;
     }
 
-    // coinflip
+    /* coinflip
     if (command[1] === "coinflip") {
         var a = rollDice(2);
 
@@ -160,7 +160,7 @@ function onMessageHandler (channel, user, msg, self) {
         }
 
         return;
-    }
+    } */
     
 
     // command list
