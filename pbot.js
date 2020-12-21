@@ -57,7 +57,7 @@ function onMessageHandler (channel, user, msg, self) {
         return;
     }
   
-    // d20
+    // roll
     if (command[1] === 'roll') {
         const num = rollDice(command[2]);
         client.say(channel, `${user['username']}, you rolled a ${num}.`);
@@ -115,7 +115,7 @@ function onMessageHandler (channel, user, msg, self) {
                 a = row(i, text);
                 client.say(channel, a);
             }
-        } else if (channel === "#phayp" && length<=20) {
+        } else if ((channel === "#phayp" || channel === "#axo__") && length<=20) {
             for(var i=0; i<length; i++) {
                 a = row(i, text);
                 client.say(channel, a);
@@ -149,8 +149,7 @@ function onMessageHandler (channel, user, msg, self) {
     }
 
     // coinflip
-    /*
-    if (command[1] === 'coinflip') {
+    if (command[1] === "coinflip") {
         var a = rollDice(2);
 
         if (a === 1) {
@@ -162,7 +161,13 @@ function onMessageHandler (channel, user, msg, self) {
 
         return;
     }
-    */
+    
+
+    // command list
+    if (command[1] === "commands") {
+        client.say{channel, `${user['username']}, currently available commands: dank, hug, pyamid, say, vanish.`};
+        return;
+    }
 
     // restart
     if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
