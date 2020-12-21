@@ -151,9 +151,10 @@ function onMessageHandler (channel, user, msg, self) {
     // coinflip
     if (command[1] === 'coinflip') {
         var value =  Math.floor(Math.random() * 2);
+
         if (value === 0) 
             client.say(channel, `${user[username]}, heads.`);
-        } else if (value === 1) {
+        } else {
             client.say(channel, `${user[username]}, tails.`);
         }
     }
