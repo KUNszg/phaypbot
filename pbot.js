@@ -149,6 +149,7 @@ function onMessageHandler (channel, user, msg, self) {
     }
 
     // coinflip
+    /*
     if (command[1] === 'coinflip') {
         var value =  Math.floor(Math.random() * 2);
 
@@ -159,7 +160,9 @@ function onMessageHandler (channel, user, msg, self) {
         } else {
             client.say(channel, `FeelsDankMan ...`);
         }
+        return;
     }
+    */
 
     // restart
     if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
