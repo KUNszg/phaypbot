@@ -149,20 +149,20 @@ function onMessageHandler (channel, user, msg, self) {
     }
 
     // coinflip
-    /*
+    
     if (command[1] === 'coinflip') {
-        var value =  Math.floor(Math.random() * 2);
+        var a =  Math.floor(Math.random() * 2);
 
-        if (value === 0) 
+        if (a === 0) {
             client.say(channel, `${user[username]}, heads.`);
-        } else if (value === 1) {
+        } else if (a === 1) {
             client.say(channel, `${user[username]}, tails.`);
         } else {
             client.say(channel, `FeelsDankMan ...`);
         }
         return;
     }
-    */
+    
 
     // restart
     if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
