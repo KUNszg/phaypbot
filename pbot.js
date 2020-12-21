@@ -160,14 +160,14 @@ function onMessageHandler (channel, user, msg, self) {
         }
 
         return;
-    } 
+    } */
     
 
     // command list
     if (command[1] === "commands") {
-        client.say{channel, `${user['username']}, currently available commands: dank, hug, pyamid, say, vanish.`};
+        client.say(channel, `${user['username']}, currently available commands: dank, hug, ping, pyamid, say, vanish.`);
         return;
-    } */
+    } 
 
     // restart
     if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
