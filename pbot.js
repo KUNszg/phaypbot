@@ -148,19 +148,18 @@ function onMessageHandler (channel, user, msg, self) {
         return;
     }
 
-    /* coinflip
+    // coinflip
     if (command[1] === "coinflip") {
         var a = rollDice(2);
 
         if (a === 1) {
             client.say(channel, `${user[username]}, heads.`);
-        }
-        if (a === 2) {
+        } else if (a === 2) {
             client.say(channel, `${user[username]}, tails.`);
         }
 
         return;
-    } */
+    } 
     
 
     // command list
