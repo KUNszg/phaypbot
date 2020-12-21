@@ -149,13 +149,12 @@ function onMessageHandler (channel, user, msg, self) {
     }
 
     // coinflip
-    
     if (command[1] === 'coinflip') {
-        var a = Math.random();
+        var a = rollDice(2);
 
-        if (a <= 0.5) {
+        if (a === 1) {
             client.say(channel, `${user[username]}, heads.`);
-        } else if (a > 0.5) {
+        } else if (a === 2) {
             client.say(channel, `${user[username]}, tails.`);
         } else {
             client.say(channel, `FeelsDankMan ...`);
