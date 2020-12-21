@@ -41,8 +41,9 @@ function onMessageHandler (channel, user, msg, self) {
     
         // banphrase
         for (var i=0; i<=command.length; i++) {
-            if (((command[i] === 'peepoSad') || (command[i] === 'peepoSadMan') || (command[i] === 'FeelsBadMan')) && ((command[i+1] === '🔫') || (command[i+1] === 'nymnGun'))) {
-                client.say(channel, `/timeout ${user['username']} 1`)
+            if (((command[i] === 'peepoSad') || (command[i] === 'peepoSadMan') || (command[i] === 'FeelsBadMan')) 
+                && ((command[i+1] === '🔫') || (command[i+1] === 'nymnGun'))) {
+                    client.say(channel, `/timeout ${user['username']} 1`)
             } 
         }
     }
@@ -57,8 +58,8 @@ function onMessageHandler (channel, user, msg, self) {
     }
   
     // d20
-    if (command[1] === 'd20') {
-        const num = rollDice();
+    if (command[1] === 'roll') {
+        const num = rollDice(command[2]);
         client.say(channel, `${user['username']}, you rolled a ${num}.`);
         return;
     } 
@@ -147,6 +148,16 @@ function onMessageHandler (channel, user, msg, self) {
         return;
     }
 
+    // coinflip
+    if (command[1] === 'coinflip') {
+        var value =  Math.floor(Math.random() * 2);
+        if (value === 0) 
+            client.say(channel, `${user[username]}, heads.`);
+        } else if (value === 1) {
+            client.say(channel, `${user[username]}, tails.`);
+        }
+    }
+
     // restart
     if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
         if (process.platform === "win32") {
@@ -155,27 +166,27 @@ function onMessageHandler (channel, user, msg, self) {
         }
 
         try {
-          const shell = require('child_process');
+            const shell = require('child_process');
 
-          const pullFromRepo = shell
-            .execSync('sudo git pull')
-            .toString()
-            .split('\n')
+            const pullFromRepo = shell
+                .execSync('sudo git pull')
+                .toString()
+                .split('\n')
 
-          if (pullFromRepo[0].toLowerCase().includes('already up to date')) {
-            client.say(channel, `peepoHappy bot is already up to date`);
-            return;
-        }
+            if (pullFromRepo[0].toLowerCase().includes('already up to date')) {
+                client.say(channel, `peepoHappy bot is already up to date`);
+                return;
+            }
 
-        const formattedResponse = pullFromRepo[0].toLowerCase().split('.')[0] + 
-            ' | ' + pullFromRepo.splice(3).join('\n').replace(/-{2,}/g, "").replace(/\+{2,}/g, "");
+            const formattedResponse = pullFromRepo[0].toLowerCase().split('.')[0] + 
+                ' | ' + pullFromRepo.splice(3).join('\n').replace(/-{2,}/g, "").replace(/\+{2,}/g, "");
 
-        client.say(channel, `peepoHappy ${formattedResponse}`);
+            client.say(channel, `peepoHappy ${formattedResponse}`);
                       
-        setTimeout(() => {
-            shell.execSync(`sudo pm2 restart bot`);
-        }, 1000);
-        return;
+            setTimeout(() => {
+                shell.execSync(`sudo pm2 restart bot`);
+            }, 1000);
+            return;
         } catch (err) {
             console.log(err)
         }
@@ -186,8 +197,7 @@ function onMessageHandler (channel, user, msg, self) {
 // functions used in commands
 
 // diceroll
-function rollDice () {
-  const sides = 20;
+function rollDice (sides) {
   return Math.floor(Math.random() * sides) + 1;
 }
   
