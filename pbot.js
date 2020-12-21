@@ -164,7 +164,7 @@ function onMessageHandler (channel, user, msg, self) {
     
 
     // command list
-    if (command[1] === "commands") {
+    if (command[1] === "commands" || command[1] === "help") {
         client.say(channel, `${user['username']}, currently available commands: dank, hug, ping, pyamid, say, vanish.`);
         return;
     } 
