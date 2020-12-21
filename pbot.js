@@ -154,8 +154,10 @@ function onMessageHandler (channel, user, msg, self) {
 
         if (value === 0) 
             client.say(channel, `${user[username]}, heads.`);
-        } else {
+        } else if (value === 1) {
             client.say(channel, `${user[username]}, tails.`);
+        } else {
+            client.say(channel, `FeelsDankMan ...`);
         }
     }
 
