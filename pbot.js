@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+'use strict';
+
 const tmi = require('tmi.js');
 
 // Define configuration options
@@ -20,7 +23,7 @@ const opts = {
 const client = new tmi.client(opts);
 
 // Register our event handlers (defined below)
-client.on('message', onMessageHandler);
+client.on('chat', onMessageHandler);
 client.on('connected', onConnectedHandler);
 
 // Connect to Twitch:
@@ -40,7 +43,7 @@ function onMessageHandler (channel, user, msg, self) {
         } 
     
         // banphrase
-        for (var i=0; i<=command.length; i++) {
+        for (let i=0; i<=command.length; i++) {
             if (((command[i] === 'peepoSad') || (command[i] === 'peepoSadMan') || (command[i] === 'FeelsBadMan')) 
                 && ((command[i+1] === '🔫') || (command[i+1] === 'nymnGun'))) {
                     client.say(channel, `/timeout ${user['username']} 1`)
@@ -100,31 +103,31 @@ function onMessageHandler (channel, user, msg, self) {
   
     // pyramid
     if (command[1] === 'pyramid') {
-        var length = command[2];
-        var text = command[3];
-        var a = '';
+        const length = command[2];
+        const text = command[3];
+        let a = '';
         
         if (text.charAt(0) === '/') {
             client.say(channel, `${user['username']}, no.`)
         } else if (length <= 5) {
-            for(var i=0; i<length; i++) {
+            for(let i=0; i<length; i++) {
                 a = row(i, text);
                 client.say(channel, a);
             }
-            for(var i=length; i>0; i--) {
+            for(let i=length; i>0; i--) {
                 a = row(i, text);
                 client.say(channel, a);
             }
         } else if ((channel === "#phayp" || channel === "#axo__") && length<=20) {
-            for(var i=0; i<length; i++) {
+            for(let i=0; i<length; i++) {
                 a = row(i, text);
                 client.say(channel, a);
             }
-            for(var i=length; i>0; i--) {
+            for(let i=length; i>0; i--) {
                 a = row(i, text);
                 client.say(channel, a);
             }
-        } else  if (length>5) {
+        } else if (length>5) {
           client.say(channel, `${user['username']}, pyramid is too big FeelsDankMan`);
         } else {
           client.say(channel, `${user['username']}, FeelsDankMan ...`);
@@ -134,12 +137,12 @@ function onMessageHandler (channel, user, msg, self) {
 
     // say
     if (command[1] === 'say') {
-        var a = '';
+        let a = '';
         
         if (command[2].charAt(0) === '/') {
             client.say(channel, `${user['username']}, no.`)
         } else {
-            for (var i=2; i<command.length; i++) {
+            for (let i=2; i<command.length; i++) {
                 a = a + command[i] + ' ';
             }
 
@@ -150,7 +153,7 @@ function onMessageHandler (channel, user, msg, self) {
 
     // coinflip
     if (command[1] === "coinflip") {
-        var a = rollDice(2);
+        let a = rollDice(2);
 
         if (a === 1) {
             client.say(channel, `${user[username]}, heads.`);
@@ -170,7 +173,7 @@ function onMessageHandler (channel, user, msg, self) {
 
     // restart
     if (command[1] === "restart" && (user['user-id'] === "97517466" || user['user-id'] === "178087241")) { // twitch id of phayp and kunszg
-        if (process.platform === "win32") {
+        if (process.platform != "linux") {
           client.say(channel, 'This command cannot be ran outside of Linux, you should use it on server version of the bot :)');
           return;
         }
@@ -208,21 +211,21 @@ function onMessageHandler (channel, user, msg, self) {
 
 // diceroll
 function rollDice (sides) {
-  return Math.floor(Math.random() * sides) + 1;
+    return Math.floor(Math.random() * sides) + 1;
 }
   
 // rows (used for pyramids)
 function row(length, text) {
-  var row = '';
+    let row = '';
   
-  for (var i=0; i<length; i++) { 
-    row = row + text + ' ';
-  }
+    for (let i=0; i<length; i++) { 
+        row = row + text + ' ';
+    }
   
-  return row;
+    return row;
 }
 
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
-  client.say('#phayp', 'hi peepoHappy');
+    client.say('#phayp', 'hi peepoHappy');
 }
