@@ -66,7 +66,7 @@ function onMessageHandler (channel, user, msg, self) {
         client.say(channel, `${user['username']}, you rolled a ${num}.`);
         return;
     } 
-
+    
     // dank
     if (command[1] === 'dank') {
         if (command[2] === user['username']) {
@@ -142,7 +142,7 @@ function onMessageHandler (channel, user, msg, self) {
         }
         return;
     }
-    /*
+
     // coinflip 
     if (command[1] === "coinflip") {
         if (Math.random()<0.5) {
@@ -153,7 +153,6 @@ function onMessageHandler (channel, user, msg, self) {
 
         return;
     } 
-    */
 
     // command list
     if (command[1] === "commands" || command[1] === "help") {
@@ -214,7 +213,6 @@ function row(length, text1, text2) {
         } else {
             row = row + text2 + ' ';
         }
-        
     }
   
     return row;
