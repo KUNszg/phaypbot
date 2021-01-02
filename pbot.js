@@ -155,7 +155,7 @@ function onMessageHandler (channel, user, msg, self) {
     if (command[1] === "coinflip") {
         let a = rollDice(2);
 
-        if (a === 1) {
+        if (Math.random()<0.5) {
             client.say(channel, `${user[username]}, heads.`);
         } else {
             client.say(channel, `${user[username]}, tails.`);
