@@ -104,33 +104,25 @@ function onMessageHandler (channel, user, msg, self) {
     // pyramid
     if (command[1] === 'pyramid') {
         const length = command[2];
-        const text = command[3];
+        const text1 = command[3];
+        const text2 = command[4];
         let a = '';
         
-        if (text.charAt(0) === '/') {
+        if (text1.charAt(0) === '/' && text2.charAt(0) === '/') {
             client.say(channel, `${user['username']}, no.`)
-        } else if (length <= 5) {
+        } else if (length <= 5 || ((channel === "#phayp" || channel === "#axo__") && length<=20)) {
             for(let i=0; i<length; i++) {
-                a = row(i, text);
+                a = row(i, text1, text2);
                 client.say(channel, a);
             }
             for(let i=length; i>0; i--) {
-                a = row(i, text);
-                client.say(channel, a);
-            }
-        } else if ((channel === "#phayp" || channel === "#axo__") && length<=20) {
-            for(let i=0; i<length; i++) {
-                a = row(i, text);
-                client.say(channel, a);
-            }
-            for(let i=length; i>0; i--) {
-                a = row(i, text);
+                a = row(i, text1, text2);
                 client.say(channel, a);
             }
         } else if (length>5) {
-          client.say(channel, `${user['username']}, pyramid is too big FeelsDankMan`);
+            client.say(channel, `${user['username']}, pyramid is too big FeelsDankMan`);
         } else {
-          client.say(channel, `${user['username']}, FeelsDankMan ...`);
+            client.say(channel, `${user['username']}, FeelsDankMan ...`);
         }
         return;
     }
@@ -150,7 +142,7 @@ function onMessageHandler (channel, user, msg, self) {
         }
         return;
     }
-    /*
+    
     // coinflip 
     if (command[1] === "coinflip") {
 
@@ -162,7 +154,7 @@ function onMessageHandler (channel, user, msg, self) {
 
         return;
     } 
-    */  
+     
 
     // command list
     if (command[1] === "commands" || command[1] === "help") {
@@ -214,11 +206,16 @@ function rollDice (sides) {
 }
   
 // rows (used for pyramids)
-function row(length, text) {
+function row(length, text1, text2) {
     let row = '';
   
-    for (let i=0; i<length; i++) { 
-        row = row + text + ' ';
+    for (let i=0; i<length; i++) {
+        if(Math.random()<0.5) {
+            row = row + text1 + ' ';
+        } else {
+            row = row + text2 + ' ';
+        }
+        
     }
   
     return row;
