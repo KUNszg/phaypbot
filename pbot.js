@@ -153,11 +153,11 @@ function onMessageHandler (channel, user, msg, self) {
 
     // coinflip
     if (command[1] === "coinflip") {
-        if (1<2) {
+        if (Math.random()<0.5) {
             client.say(channel, `${user[username]}, heads.`);
-        } else {
+        } /*else {
             client.say(channel, `${user[username]}, tails.`);
-        }
+        } */
 
         return;
     } 
