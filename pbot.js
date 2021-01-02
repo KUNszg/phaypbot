@@ -150,9 +150,10 @@ function onMessageHandler (channel, user, msg, self) {
         }
         return;
     }
-
-    // coinflip
+    /*
+    // coinflip 
     if (command[1] === "coinflip") {
+
         if (Math.random()<0.5) {
             client.say(channel, `${user['username']}, heads.`);
         } else {
@@ -161,7 +162,7 @@ function onMessageHandler (channel, user, msg, self) {
 
         return;
     } 
-    
+    */  
 
     // command list
     if (command[1] === "commands" || command[1] === "help") {
