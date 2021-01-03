@@ -206,7 +206,7 @@ function rollDice (sides) {
 // rows (used for pyramids)
 function row(length, text1, text2) {
     let row = '';
-    if (text2 === '') {
+    if (text2.length === 0) {
         for (let i=0; i<length; i++) {
                 row = row + text1 + ' ';
             }
