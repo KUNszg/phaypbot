@@ -120,7 +120,7 @@ function onMessageHandler (channel, user, msg, self) {
     if (command[1] === 'pyramid') {
         const length = command[2];
         const text1 = command[3];
-        if (command[4].length != 0) { const text2 = command[4]; } else { const text2 = command[3] };
+        const text2 = command[4];
 
         let a = '';
         
