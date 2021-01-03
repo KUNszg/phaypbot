@@ -206,17 +206,22 @@ function rollDice (sides) {
 // rows (used for pyramids)
 function row(length, text1, text2) {
     let row = '';
-  
-    for (let i=0; i<length; i++) {
-        if(Math.random()<0.5) {
-            row = row + text1 + ' ';
-        } else {
-            row = row + text2 + ' ';
+    if (!text2) {
+        for (let i=0; i<length; i++) {
+                row = row + text1 + ' ';
+            }
+    } else {
+        for (let i=0; i<length; i++) {
+            if(Math.random()<0.5) {
+                row = row + text1 + ' ';
+            } else {
+                row = row + text2 + ' ';
+            }
         }
     }
-  
     return row;
 }
+
 
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
