@@ -74,7 +74,7 @@ function onMessageHandler (channel, user, msg, self) {
     // roll
     if (command[1] === 'roll') {
         const num = rollDice(command[2]);
-        client.say(channel, `${user['username']}, you rolled a ${num}.`);
+        client.say(channel, `${user['username']}, you rolled a ${num} peepoHappy`);
         return;
     } 
     
@@ -168,7 +168,7 @@ function onMessageHandler (channel, user, msg, self) {
 
     // command list
     if (command[1] === "commands" || command[1] === "help") {
-        client.say(channel, `${user['username']}, currently available commands: dank, hug, ping, pyamid, say, vanish.`);
+        client.say(channel, `${user['username']}, currently available commands: dank, hug, ping, pyamid, say, vanish peepoHappy`);
         return;
     } 
 
