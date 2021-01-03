@@ -30,7 +30,7 @@ client.on('connected', onConnectedHandler);
 client.connect();
 
 // peepo swing
-const peepoSwung = 0;
+const peepoSwingCount = 0;
 
 // Called every time a message comes in
 function onMessageHandler (channel, user, msg, self) {
@@ -61,8 +61,8 @@ function onMessageHandler (channel, user, msg, self) {
             }
         }
         if (peepoSwing === true) {
-            peepoSwung++;
-            client.say(channel, `peepoSwing peepo has swung ${peepoSwung} times`);
+            peepoSwingCount++;
+            client.say(channel, `peepoSwing peepo has swung ${peepoSwingCount} times`);
         }
     }
   
