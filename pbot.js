@@ -98,7 +98,7 @@ function onMessageHandler (channel, user, msg, self) {
             client.say(channel, `${user['username']} hugs themselves dankHug`);
         } else {
         if (!command[2]) {
-            client.say(channel, `${user['username']} had no one to hug so they hugged themselves dankHug`);
+            client.say(channel, `${user['username']} has no one to hug peepoSad`);
             } else {
                 client.say(channel, `${user['username']} hugs ${command[2]} dankHug`)
             }
@@ -115,15 +115,13 @@ function onMessageHandler (channel, user, msg, self) {
     // pyramid
     if (command[1] === 'pyramid') {
         const length = command[2];
-        const text1 = '';
-        const text2 = '';
-        if (command[3].length != 0) { text1 = command[3]; }
-        if (command[4].length != 0) { text2 = command[3]; }
+        const text1 = command[3];
+        if (command[4].length != 0) { const text2 = command[4]; } else { const text2 = command[3] };
 
         let a = '';
         
         if (text1.charAt(0) === '/' && text2.charAt(0) === '/') {
-            client.say(channel, `${user['username']}, no.`)
+            client.say(channel, `${user['username']}, FeelsDankMan`)
         } else if (length <= 5 || ((channel === "#phayp" || channel === "#axo__") && length<=20)) {
             for(let i=0; i<length; i++) {
                 a = row(i, text1, text2);
@@ -146,7 +144,7 @@ function onMessageHandler (channel, user, msg, self) {
         let a = '';
         
         if (command[2].charAt(0) === '/') {
-            client.say(channel, `${user['username']}, no.`)
+            client.say(channel, `${user['username']}, FeelsDankMan`)
         } else {
             for (let i=2; i<command.length; i++) {
                 a = a + command[i] + ' ';
@@ -160,9 +158,9 @@ function onMessageHandler (channel, user, msg, self) {
     // coinflip 
     if (command[1] === "coinflip") {
         if (Math.random()<0.5) {
-            client.say(channel, `${user['username']}, heads.`);
+            client.say(channel, `${user['username']}, heads peepoHappy`);
         } else {
-            client.say(channel, `${user['username']}, tails.`);
+            client.say(channel, `${user['username']}, tails peepoHappy`);
         } 
 
         return;
