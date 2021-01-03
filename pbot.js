@@ -46,8 +46,19 @@ function onMessageHandler (channel, user, msg, self) {
         for (let i=0; i<=command.length; i++) {
             if (((command[i] === 'peepoSad') || (command[i] === 'peepoSadMan') || (command[i] === 'FeelsBadMan')) 
                 && ((command[i+1] === '🔫') || (command[i+1] === 'nymnGun'))) {
-                    client.say(channel, `/timeout ${user['username']} 1`)
+                    client.say(channel, `/timeout ${user['username']} 1`);
             } 
+        }
+
+        // peepoSwing
+        let peepoSwing = false;
+        for (let i=0; i<=command.length; i++) {
+            if (command[i] === 'peepoSwing') {
+                peepoSwing = true;
+            }
+        }
+        if (peepoSwing === true) {
+            client.say(channel, `peepoSwing`);
         }
     }
   
@@ -104,8 +115,11 @@ function onMessageHandler (channel, user, msg, self) {
     // pyramid
     if (command[1] === 'pyramid') {
         const length = command[2];
-        const text1 = command[3];
-        const text2 = command[4];
+        const text1 = '';
+        const text2 = '';
+        if (command[3].length != 0) { text1 = command[3]; }
+        if (command[4].length != 0) { text2 = command[3]; }
+
         let a = '';
         
         if (text1.charAt(0) === '/' && text2.charAt(0) === '/') {
@@ -206,7 +220,8 @@ function rollDice (sides) {
 // rows (used for pyramids)
 function row(length, text1, text2) {
     let row = '';
-    if (text2.length === 0) {
+
+    if (text2 === '') {
         for (let i=0; i<length; i++) {
                 row = row + text1 + ' ';
             }
