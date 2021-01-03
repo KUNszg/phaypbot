@@ -29,6 +29,9 @@ client.on('connected', onConnectedHandler);
 // Connect to Twitch:
 client.connect();
 
+// peepo swing
+const peepoSwung = 0;
+
 // Called every time a message comes in
 function onMessageHandler (channel, user, msg, self) {
     if (self) { return; } // Ignore messages from the bot
@@ -58,7 +61,8 @@ function onMessageHandler (channel, user, msg, self) {
             }
         }
         if (peepoSwing === true) {
-            client.say(channel, `peepoSwing`);
+            peepoSwung++;
+            client.say(channel, `peepoSwing peepo has swung ${peepoSwung} times`);
         }
     }
   
