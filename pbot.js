@@ -125,7 +125,9 @@ function onMessageHandler (channel, user, msg, self) {
 
         let a = '';
         
-        if (text1.charAt(0) === '/' && text2.charAt(0) === '/') {
+        if (!text1) {
+            client.say(channel, `${user['username']}, FeelsDankMan ...`);
+        } else if (text1.charAt(0) === '/' && text2.charAt(0) === '/') {
             client.say(channel, `${user['username']}, FeelsDankMan`)
         } else if (length <= 5 || ((channel === "#phayp" || channel === "#axo__") && length<=20)) {
             for(let i=0; i<length; i++) {
@@ -138,8 +140,6 @@ function onMessageHandler (channel, user, msg, self) {
             }
         } else if (length>5) {
             client.say(channel, `${user['username']}, pyramid is too big FeelsDankMan`);
-        } else {
-            client.say(channel, `${user['username']}, FeelsDankMan ...`);
         }
         return;
     }
