@@ -29,8 +29,8 @@ client.on('connected', onConnectedHandler);
 // Connect to Twitch:
 client.connect();
 
-// peepo swing
-const peepoSwingCount = 0;
+// peepo swing count
+let peepoSwingCount = 0;
 
 // Called every time a message comes in
 function onMessageHandler (channel, user, msg, self) {
