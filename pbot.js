@@ -203,7 +203,7 @@ function onMessageHandler (channel, user, msg, self) {
             client.say(channel, `peepoHappy ${formattedResponse}`);
                       
             setTimeout(() => {
-                shell.execSync(`sudo pm2 restart bot`);
+                shell.execSync(`pm2 restart bot`);
             }, 1000);
             return;
         } catch (err) {
