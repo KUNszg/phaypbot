@@ -35,6 +35,7 @@ let peepoSwingCount = 0;
 // Called every time a message comes in
 function onMessageHandler (channel, user, msg, self) {
     if (self) { return; } // Ignore messages from the bot
+    if (user['username'] === 'phaypbot') { return; } // Ignore messages from the bot too
 
     const command = msg.split(' '); // splits message into array
   
